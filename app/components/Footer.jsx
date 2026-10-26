@@ -177,7 +177,7 @@ const Footer = () => {
           </ul>
 
           <p className="text-[15px] font-semibold md:mr-24">
-            © {new Date().getFullYear()} Teeka Resort Suites &amp; Spa
+            © 2026 Teeka Resort Suites &amp; Spa
           </p>
         </div>
       </div>
