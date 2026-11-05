@@ -1,41 +1,18 @@
+
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { rooms } from "../lib/rooms";
 
 /*
-  bark #3B1D12 | deep #2B140C | leaf #8DC63F | moss #6FA83A | cream #F6F3EC | sand #EBE5D8
+  bark #3B1D12
+  deep #2B140C
+  leaf #8DC63F
+  moss #6FA83A
+  cream #F6F3EC
+  sand #EBE5D8
 */
-
-const rooms = [
-  {
-    title: "DELUXE ROOM",
-    name: "Deluxe Room",
-    image:
-      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2000&q=85",
-    href: "https://www.teekaresort.com/subpackage/deluxe-room",
-  },
-  {
-    title: "SUPER DELUXE",
-    name: "Super Deluxe",
-    image:
-      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2000&q=85",
-    href: "#rooms",
-  },
-  {
-    title: "FAMILY",
-    name: "Family Room",
-    image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=2000&q=85",
-    href: "#rooms",
-  },
-  {
-    title: "HONEYMOON",
-    name: "Honeymoon Suite",
-    image:
-      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2000&q=85",
-    href: "#rooms",
-  },
-];
 
 const arrowClass =
   "absolute top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full text-[#3B1D12] transition-colors hover:bg-[#8DC63F] focus-visible:bg-[#8DC63F] focus-visible:outline-none";
@@ -59,14 +36,15 @@ export default function Rooms() {
       id="rooms"
       className="relative w-full overflow-hidden bg-[#EBE5D8] pb-16 pt-14 sm:pb-20 sm:pt-16 md:pt-[78px]"
     >
-      {/* Section heading */}
+      {/* Section Heading */}
       <h2 className="mb-10 text-center font-serif text-[42px] font-normal leading-none tracking-[-1.5px] text-[#3B1D12] sm:mb-12 sm:text-6xl md:mb-[62px] md:text-[80px] md:tracking-[-2px]">
         SUITES &amp; ROOMS
       </h2>
 
-      {/* Room carousel */}
+      {/* Room Carousel */}
       <div className="relative h-[420px] w-full sm:h-[500px] md:h-[600px] lg:h-[650px]">
-        {/* Previous room preview */}
+
+        {/* Previous Room Preview */}
         <button
           type="button"
           onClick={previousRoom}
@@ -81,7 +59,7 @@ export default function Rooms() {
           <div className="absolute inset-0 bg-[#2B140C]/35" />
         </button>
 
-        {/* Left arrow */}
+        {/* Left Arrow */}
         <button
           type="button"
           onClick={previousRoom}
@@ -100,9 +78,9 @@ export default function Rooms() {
           </svg>
         </button>
 
-        {/* Main room */}
-        <a
-          href={getRoom(0).href}
+        {/* Main Room - Links to Dynamic Detail Page */}
+        <Link
+          href={`/rooms/${getRoom(0).slug}`}
           className="group absolute left-1/2 top-0 z-20 block h-full w-[78%] -translate-x-1/2 overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8DC63F] sm:w-[71%]"
         >
           <img
@@ -112,19 +90,26 @@ export default function Rooms() {
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
           />
 
-          {/* Warm brand overlay so the title stays legible */}
+          {/* Warm Brand Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#2B140C]/55 via-[#2B140C]/20 to-[#2B140C]/30" />
 
-          {/* Room title */}
+          {/* Room Title */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-            <h3 className="px-4 text-center font-serif text-[38px] font-normal tracking-[-1px] text-white sm:text-5xl md:text-[76px] md:tracking-[-2px]">
-              {getRoom(0).title}
-            </h3>
-            <span className="h-[2px] w-16 bg-[#8DC63F] transition-all duration-500 group-hover:w-28" />
-          </div>
-        </a>
 
-        {/* Next room preview */}
+            <h3 className="px-4 text-center font-serif text-[38px] font-normal tracking-[-1px] text-white sm:text-5xl md:text-[76px] md:tracking-[-2px]">
+              {getRoom(0).title || getRoom(0).name.toUpperCase()}
+            </h3>
+
+            <span className="h-[2px] w-16 bg-[#8DC63F] transition-all duration-500 group-hover:w-28" />
+
+            <span className="mt-2 text-xs font-medium uppercase tracking-[3px] text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Explore Room →
+            </span>
+
+          </div>
+        </Link>
+
+        {/* Next Room Preview */}
         <button
           type="button"
           onClick={nextRoom}
@@ -139,7 +124,7 @@ export default function Rooms() {
           <div className="absolute inset-0 bg-[#2B140C]/35" />
         </button>
 
-        {/* Right arrow */}
+        {/* Right Arrow */}
         <button
           type="button"
           onClick={nextRoom}
@@ -157,7 +142,27 @@ export default function Rooms() {
             <path d="m9 4 8 8-8 8" />
           </svg>
         </button>
+
       </div>
+
+      {/* Room Navigation Indicators */}
+      <div className="mt-9 flex items-center justify-center gap-3">
+        {rooms.map((room, index) => (
+          <button
+            key={room.slug}
+            type="button"
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Show ${room.name}`}
+            aria-current={activeIndex === index ? "true" : undefined}
+            className={`h-[3px] transition-all duration-300 ${
+              activeIndex === index
+                ? "w-10 bg-[#3B1D12]"
+                : "w-5 bg-[#3B1D12]/30 hover:bg-[#3B1D12]"
+            }`}
+          />
+        ))}
+      </div>
+
     </section>
   );
 }

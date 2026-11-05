@@ -1,6 +1,7 @@
 // Merge the `metadata` and `viewport` exports and <html lang="en"> into your existing
 // layout. Keep your own font setup (font-joane / font-raleway) and globals.css import.
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 import "./globals.css";
 import { site } from "./lib/site";
 
@@ -48,7 +49,10 @@ export const viewport = { width: "device-width", initialScale: 1, themeColor: "#
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}
+
+      <body className="antialiased">
+        <Navbar />
+        {children}
 
         <Footer />
       </body>

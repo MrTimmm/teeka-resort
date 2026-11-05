@@ -6,13 +6,6 @@ import React from 'react';
 
 const columns = [
   {
-    heading: 'Reservations',
-    links: [
-      { label: 'Online check-in', href: '#' },
-      { label: 'Rewards', href: '#' },
-    ],
-  },
-  {
     heading: 'Explore',
     links: [
       { label: 'Our Resort', href: '#' },
@@ -71,12 +64,21 @@ const socials = [
   },
 ];
 
+const bookingPlatforms = [
+  { label: 'Booking.com', href: 'https://www.booking.com/hotel/np/teeka-resort-suite-amp-spa.html', logo: '/images/booking.png' },
+  { label: 'Agoda', href: 'https://www.agoda.com/teeka-resort-suites-and-spa-h40906181/hotel/pokhara-np.html', logo: '/images/agoda.png' },
+  { label: 'Tripadvisor', href: 'https://www.tripadvisor.com/Hotel_Review-g293891-d10625453-Reviews-Teeka_Resort-Pokhara_Gandaki_Zone_Western_Region.html', logo: '/images/tripadvisor.png' },
+  { label: 'MakeMyTrip', href: 'https://www.makemytrip.com/hotels-international/en-us/nepal/pokhara-hotels/teeka_resort_suites_and_spa-details.html', logo: '/images/makemytrip.png' },
+  { label: 'Expedia', href: '#', logo: '/images/expedia.png' },
+  { label: 'Trip.com', href: 'https://www.trip.com/hotels/pokhara-hotel-detail-21888815/teeka-resort-suites-and-spa/', logo: '/images/trip.com.png' },
+];
+
 const linkClass =
   'text-[16px] text-[#3B1D12] transition-colors hover:text-[#6FA83A] focus-visible:text-[#6FA83A] focus-visible:outline-none';
 
 const Footer = () => {
   return (
-    <footer className="w-full  bg-[#F6F3EC] font-sans text-[#3B1D12]">
+    <footer className="w-full bg-[#F6F3EC] font-sans text-[#3B1D12]">
       {/* Main footer */}
       <div className="mx-auto max-w-[1700px] px-5 pb-16 pt-14 sm:px-8 md:pb-24 md:pt-[72px] lg:px-[6%]">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_1.3fr_0.7fr] lg:gap-8">
@@ -89,7 +91,34 @@ const Footer = () => {
             />
           </a>
 
-          {/* Reservations + Explore */}
+          {/* Book With Us (replaces Reservations) */}
+          <div>
+            <h3 className="mb-6 text-[15px] font-semibold uppercase tracking-[-0.2px]">
+              Book With Us
+            </h3>
+            <ul className="grid grid-cols-3 ">
+              {bookingPlatforms.map((p) => (
+                <li key={p.label}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={p.label}
+                    className="flex h-16 items-center justify-center"
+                  >
+                    <img
+                      src={p.logo}
+                      alt={p.label}
+                      className="max-h-16 w-auto max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Explore */}
           {columns.map((col) => (
             <div key={col.heading}>
               <h3 className="mb-6 text-[15px] font-semibold uppercase tracking-[-0.2px]">

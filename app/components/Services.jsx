@@ -8,20 +8,20 @@ const services = [
   {
     title: "DINING",
     image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=85",
-    href: "#dining",
+      "/images/restro.jpg",
+    href: "/services",
   },
   {
     title: "SPA",
     image:
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85",
-    href: "#spa",
+      "/images/spa.jpg",
+    href: "/services",
   },
   {
     title: "HALL",
     image:
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=85",
-    href: "#hall",
+      "/images/hall.jpg",
+    href: "/services",
   },
 ];
 

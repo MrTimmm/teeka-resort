@@ -59,7 +59,7 @@ export default function WhatsOn() {
   return (
     <section
       id="whats-on"
-      className="w-full overflow-hidden bg-[#F6F3EC] px-5 text-[#111111] sm:px-8 md:py-20 md:py-24"
+      className="w-full overflow-hidden bg-[#F6F3EC] px-5 text-[#111111] sm:px-8 py-20 md:py-24"
     >
       {/* Heading */}
       <h2 className="mb-8 text-center text-[40px] font-normal leading-tight tracking-[1px] sm:mb-9 sm:text-5xl md:text-[48px]">
