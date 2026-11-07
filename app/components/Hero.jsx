@@ -34,7 +34,7 @@ const Hero = () => {
 
         <p className="mx-auto mt-4 max-w-2xl text-[15px] font-normal leading-relaxed tracking-[-0.3px] text-[#F6F3EC]/90 sm:mt-5 sm:text-[17px] md:text-[18px]">
           One of the unique properties with international-standard, personalized
-          services that reflect our Nepali hospitality — in the heart of Lakeside Pokhara.
+          services that reflect our Nepali hospitality, in the heart of Lakeside Pokhara.
         </p>
       </section>
     </main>

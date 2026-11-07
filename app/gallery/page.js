@@ -14,25 +14,37 @@ const galleryImages = [
     category: "ARCHITECTURE",
   },
   {
-    src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85",
+    src: "/images/resort.webp",
+    alt: "Beautiful historic European architecture",
+    title: "Architectural Beauty",
+    category: "ARCHITECTURE",
+  },
+  {
+    src: "/images/spa.jpg",
+    alt: "Beautiful historic European architecture",
+    title: "Architectural Beauty",
+    category: "ARCHITECTURE",
+  },
+  {
+    src: "/images/lift.jfif",
     alt: "An elegant fine dining experience",
     title: "A Taste of Luxury",
     category: "DINING",
   },
   {
-    src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85",
+    src: "/images/img4.jpg",
     alt: "Refined hotel bedroom with soft neutral tones",
     title: "Rest & Retreat",
     category: "ACCOMMODATION",
   },
   {
-    src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85",
+    src: "/images/about.jfif",
     alt: "Luxury resort swimming pool",
     title: "Moments of Serenity",
     category: "EXPERIENCES",
   },
   {
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
+    src: "/images/hall2.jpg",
     alt: "Beautifully designed modern architectural interior",
     title: "Thoughtful Details",
     category: "DESIGN",
@@ -43,29 +55,29 @@ const Page = () => {
   return (
     <>
       {/* Hero Section */}
-      <main className="relative min-h-[830px] w-full overflow-hidden bg-[#2B140C] font-sans text-white md:h-screen md:min-h-[700px]">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/barahi.jpg')" }}
-        />
+ {/* Hero */}
+<main className="relative min-h-[830px] w-full overflow-hidden bg-[#2B140C] font-sans text-white md:h-screen md:min-h-[700px]">
+  {/* Background image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('/images/barahi.jpg')" }}
+  />
 
-        {/* Image overlays: warm brown tint instead of neutral black */}
-        <div className="absolute inset-0 bg-[#2B140C]/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2B140C]/30 via-transparent to-[#2B140C]/60" />
+  {/* Image overlays: warm brown tint instead of neutral black */}
+  <div className="absolute inset-0 bg-[#2B140C]/40" />
+  <div className="absolute inset-0 bg-gradient-to-b from-[#2B140C]/30 via-transparent to-[#2B140C]/60" />
 
-        <section className="absolute inset-x-0 bottom-0 z-10 px-5 pb-12 text-center sm:pb-16 md:pb-20 md:px-10">
-          <h1 className="mx-auto max-w-[1570px] font-serif text-[36px] uppercase leading-[1.16] tracking-[-1.5px] sm:text-[46px] md:text-[50px] lg:text-[60px] xl:text-5xl xl:tracking-[-2px]">
-            A luxury hotel steeped in history in the heart
-            <span className="block">of Barcelona</span>
-          </h1>
+  <section className="absolute inset-x-0 bottom-0 z-10 px-5 pb-12 text-center sm:pb-16 md:pb-20 md:px-10">
+    <h1 className="mx-auto max-w-[1570px] font-serif text-[36px] uppercase leading-[1.16] tracking-[-1.5px] sm:text-[46px] md:text-[50px] lg:text-[60px] xl:text-5xl xl:tracking-[-2px]">
+      Moments captured at Teeka
+      <span className="block">Resort &amp; Spa</span>
+    </h1>
 
-          <p className="mt-[18px] text-[16px] font-normal tracking-[-0.5px] text-[#F6F3EC] sm:text-[19px] md:text-md">
-            A 1920s building by Noucentist architect Adolf Florensa.
-          </p>
-        </section>
-      </main>
-
+    <p className="mt-[18px] text-[16px] font-normal tracking-[-0.5px] text-[#F6F3EC] sm:text-[19px] md:text-md">
+      Explore our rooms, lakeside views, dining, spa, and the everyday charm of Pokhara.
+    </p>
+  </section>
+</main>
       {/* Gallery */}
       <main className="min-h-screen bg-white text-[#242424]">
         <section

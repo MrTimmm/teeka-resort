@@ -1,5 +1,6 @@
 // Merge the `metadata` and `viewport` exports and <html lang="en"> into your existing
 // layout. Keep your own font setup (font-joane / font-raleway) and globals.css import.
+import FloatingActions from "./components/FloatingActions";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
       <body className="antialiased">
         <Navbar />
         {children}
+        <FloatingActions />
 
         <Footer />
       </body>
