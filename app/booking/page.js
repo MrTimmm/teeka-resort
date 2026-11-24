@@ -1,9 +1,11 @@
+
 import React, { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import Navbar from "@/app/components/Navbar";
-import { rooms } from "@/app/lib/rooms";
 import BookingForm from "@/app/components/BookingForm";
+import { rooms } from "@/app/lib/rooms";
 
 export const metadata = {
   title: "Book Your Stay | Teeka Resort",
@@ -11,20 +13,25 @@ export const metadata = {
     "Reserve your luxury escape at Teeka Resort. Select your room, dates, and guests to begin your booking.",
 };
 
-// This component can safely access searchParams
+// Booking content
 async function BookingContent({ searchParams }) {
-  const { room: roomSlug } = await searchParams;
+  // Next.js 15/16 searchParams is a Promise
+  const params = await searchParams;
+
+  const roomSlug = params?.room || "";
 
   const selectedRoom = roomSlug
-    ? rooms.find((item) => item.slug === roomSlug)
+    ? rooms.find((room) => room.slug === roomSlug)
     : null;
 
+  // Invalid room slug
   if (roomSlug && !selectedRoom) {
     notFound();
   }
 
   return (
     <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[1fr_380px] lg:gap-20">
+
       {/* Booking Form */}
       <div>
         <span className="text-xs font-semibold uppercase tracking-[4px] text-[#96734F]">
@@ -50,6 +57,7 @@ async function BookingContent({ searchParams }) {
       {/* Summary Sidebar */}
       <aside>
         <div className="sticky top-24 border border-[#E9E5DF] p-7 sm:p-9">
+
           <span className="text-xs uppercase tracking-[3px] text-[#96734F]">
             Your Selection
           </span>
@@ -67,23 +75,26 @@ async function BookingContent({ searchParams }) {
               <div className="my-7 border-t border-[#E9E5DF]" />
 
               <div className="space-y-4 text-sm text-[#62594F]">
-                <div className="flex justify-between">
+
+                <div className="flex justify-between gap-4">
                   <span>Room Type</span>
                   <span className="font-medium text-[#29241F]">
                     {selectedRoom.name}
                   </span>
                 </div>
-                <div className="flex justify-between">
+
+                <div className="flex justify-between gap-4">
                   <span>Starting Price</span>
                   <span className="font-medium text-[#29241F]">
                     ${selectedRoom.startingPrice}
                   </span>
                 </div>
+
               </div>
 
               <Link
                 href={`/rooms/${selectedRoom.slug}`}
-                className="mt-7 inline-block text-xs uppercase tracking-[2px] text-[#96734F] underline underline-offset-4 hover:text-[#2B140C]"
+                className="mt-7 inline-block text-xs uppercase tracking-[2px] text-[#96734F] underline underline-offset-4 transition hover:text-[#2B140C]"
               >
                 View room details →
               </Link>
@@ -101,21 +112,36 @@ async function BookingContent({ searchParams }) {
             <p>✓ No prepayment required</p>
             <p>✓ Free cancellation up to 48 hours</p>
           </div>
+
         </div>
       </aside>
+
     </div>
   );
 }
 
-// The main page component
-const BookingPage = ({ searchParams }) => {
+// Loading fallback
+function BookingLoading() {
+  return (
+    <div className="mx-auto max-w-[1400px] py-20 text-center">
+      <p className="text-sm text-gray-500">
+        Loading booking details...
+      </p>
+    </div>
+  );
+}
+
+// Main Booking Page
+export default function BookingPage({ searchParams }) {
   return (
     <>
       <Navbar />
 
       <main className="bg-white">
+
         {/* Page Heading */}
         <section className="bg-[#2B140C] px-5 py-20 text-center text-white sm:py-28">
+
           <span className="text-xs uppercase tracking-[5px] text-[#C6A47E]">
             Reservations
           </span>
@@ -125,33 +151,38 @@ const BookingPage = ({ searchParams }) => {
           </h1>
 
           <div className="mt-6 text-sm text-white/70">
-            <Link href="/" className="hover:text-white">
+
+            <Link href="/" className="transition hover:text-white">
               Home
             </Link>
+
             <span className="mx-3">/</span>
-            <Link href="/#rooms" className="hover:text-white">
+
+            <Link href="/#rooms" className="transition hover:text-white">
               Rooms
             </Link>
+
             <span className="mx-3">/</span>
-            <span className="text-[#C6A47E]">Booking</span>
+
+            <span className="text-[#C6A47E]">
+              Booking
+            </span>
+
           </div>
         </section>
 
-        {/* Booking Section with Suspense */}
+        {/* Booking Section */}
         <section className="px-5 py-14 sm:px-8 lg:px-14 lg:py-20">
-          <Suspense
-            fallback={
-              <div className="mx-auto max-w-[1400px] text-center py-20">
-                <p className="text-sm text-gray-500">Loading booking details...</p>
-              </div>
-            }
-          >
+
+          <Suspense fallback={<BookingLoading />}>
             <BookingContent searchParams={searchParams} />
           </Suspense>
+
         </section>
 
         {/* Help Section */}
         <section className="bg-[#F7F5F1] px-5 py-16 text-center">
+
           <p className="text-xs uppercase tracking-[4px] text-[#96734F]">
             Need Assistance?
           </p>
@@ -172,10 +203,10 @@ const BookingPage = ({ searchParams }) => {
           >
             Contact Us →
           </Link>
+
         </section>
+
       </main>
     </>
   );
-};
-
-export default BookingPage;
+}
