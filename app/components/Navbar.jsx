@@ -63,7 +63,7 @@ const Navbar = () => {
           </a>
 
           <Link
-            href="/contact"
+            href="/booking"
             className="flex h-[33px] min-w-[90px] items-center justify-center gap-[10px] border border-[#8DC63F]/50 bg-[#3B1D12]/60 px-[10px] text-[14px] transition-colors hover:border-[#8DC63F]"
           >
             Book Now

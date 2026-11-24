@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
@@ -11,18 +11,104 @@ export const metadata = {
     "Reserve your luxury escape at Teeka Resort. Select your room, dates, and guests to begin your booking.",
 };
 
-const BookingPage = async ({ searchParams }) => {
+// This component can safely access searchParams
+async function BookingContent({ searchParams }) {
   const { room: roomSlug } = await searchParams;
 
   const selectedRoom = roomSlug
     ? rooms.find((item) => item.slug === roomSlug)
     : null;
 
-  // If a room slug was provided but doesn't exist, show 404
   if (roomSlug && !selectedRoom) {
     notFound();
   }
 
+  return (
+    <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[1fr_380px] lg:gap-20">
+      {/* Booking Form */}
+      <div>
+        <span className="text-xs font-semibold uppercase tracking-[4px] text-[#96734F]">
+          Step 1 of 1
+        </span>
+
+        <h2 className="mt-4 font-serif text-4xl text-[#29241F] sm:text-5xl">
+          Reservation Details
+        </h2>
+
+        <p className="mt-5 max-w-xl text-sm leading-8 text-[#69645E] sm:text-base">
+          Please provide your details below. Our team will confirm
+          availability and reach out within 24 hours to finalize your
+          reservation.
+        </p>
+
+        <BookingForm
+          rooms={rooms}
+          selectedRoomSlug={selectedRoom?.slug || ""}
+        />
+      </div>
+
+      {/* Summary Sidebar */}
+      <aside>
+        <div className="sticky top-24 border border-[#E9E5DF] p-7 sm:p-9">
+          <span className="text-xs uppercase tracking-[3px] text-[#96734F]">
+            Your Selection
+          </span>
+
+          {selectedRoom ? (
+            <>
+              <p className="mt-5 font-serif text-3xl text-[#2B140C]">
+                {selectedRoom.name}
+              </p>
+
+              <span className="text-xs text-gray-500">
+                Starting from ${selectedRoom.startingPrice} / night
+              </span>
+
+              <div className="my-7 border-t border-[#E9E5DF]" />
+
+              <div className="space-y-4 text-sm text-[#62594F]">
+                <div className="flex justify-between">
+                  <span>Room Type</span>
+                  <span className="font-medium text-[#29241F]">
+                    {selectedRoom.name}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Starting Price</span>
+                  <span className="font-medium text-[#29241F]">
+                    ${selectedRoom.startingPrice}
+                  </span>
+                </div>
+              </div>
+
+              <Link
+                href={`/rooms/${selectedRoom.slug}`}
+                className="mt-7 inline-block text-xs uppercase tracking-[2px] text-[#96734F] underline underline-offset-4 hover:text-[#2B140C]"
+              >
+                View room details →
+              </Link>
+            </>
+          ) : (
+            <p className="mt-5 text-sm leading-7 text-gray-500">
+              Select a room in the form to see your booking summary here.
+            </p>
+          )}
+
+          <div className="my-7 border-t border-[#E9E5DF]" />
+
+          <div className="space-y-3 text-xs text-gray-400">
+            <p>✓ Best rate guaranteed</p>
+            <p>✓ No prepayment required</p>
+            <p>✓ Free cancellation up to 48 hours</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+// The main page component
+const BookingPage = ({ searchParams }) => {
   return (
     <>
       <Navbar />
@@ -51,88 +137,17 @@ const BookingPage = async ({ searchParams }) => {
           </div>
         </section>
 
-        {/* Booking Section */}
+        {/* Booking Section with Suspense */}
         <section className="px-5 py-14 sm:px-8 lg:px-14 lg:py-20">
-          <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[1fr_380px] lg:gap-20">
-            {/* Booking Form */}
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[4px] text-[#96734F]">
-                Step 1 of 1
-              </span>
-
-              <h2 className="mt-4 font-serif text-4xl text-[#29241F] sm:text-5xl">
-                Reservation Details
-              </h2>
-
-              <p className="mt-5 max-w-xl text-sm leading-8 text-[#69645E] sm:text-base">
-                Please provide your details below. Our team will confirm
-                availability and reach out within 24 hours to finalize your
-                reservation.
-              </p>
-
-              <BookingForm
-                rooms={rooms}
-                selectedRoomSlug={selectedRoom?.slug || ""}
-              />
-            </div>
-
-            {/* Summary Sidebar */}
-            <aside>
-              <div className="sticky top-24 border border-[#E9E5DF] p-7 sm:p-9">
-                <span className="text-xs uppercase tracking-[3px] text-[#96734F]">
-                  Your Selection
-                </span>
-
-                {selectedRoom ? (
-                  <>
-                    <p className="mt-5 font-serif text-3xl text-[#2B140C]">
-                      {selectedRoom.name}
-                    </p>
-
-                    <span className="text-xs text-gray-500">
-                      Starting from ${selectedRoom.startingPrice} / night
-                    </span>
-
-                    <div className="my-7 border-t border-[#E9E5DF]" />
-
-                    <div className="space-y-4 text-sm text-[#62594F]">
-                      <div className="flex justify-between">
-                        <span>Room Type</span>
-                        <span className="font-medium text-[#29241F]">
-                          {selectedRoom.name}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Starting Price</span>
-                        <span className="font-medium text-[#29241F]">
-                          ${selectedRoom.startingPrice}
-                        </span>
-                      </div>
-                    </div>
-
-                    <Link
-                      href={`/rooms/${selectedRoom.slug}`}
-                      className="mt-7 inline-block text-xs uppercase tracking-[2px] text-[#96734F] underline underline-offset-4 hover:text-[#2B140C]"
-                    >
-                      View room details →
-                    </Link>
-                  </>
-                ) : (
-                  <p className="mt-5 text-sm leading-7 text-gray-500">
-                    Select a room in the form to see your booking summary here.
-                  </p>
-                )}
-
-                <div className="my-7 border-t border-[#E9E5DF]" />
-
-                <div className="space-y-3 text-xs text-gray-400">
-                  <p>✓ Best rate guaranteed</p>
-                  <p>✓ No prepayment required</p>
-                  <p>✓ Free cancellation up to 48 hours</p>
-                </div>
+          <Suspense
+            fallback={
+              <div className="mx-auto max-w-[1400px] text-center py-20">
+                <p className="text-sm text-gray-500">Loading booking details...</p>
               </div>
-            </aside>
-          </div>
+            }
+          >
+            <BookingContent searchParams={searchParams} />
+          </Suspense>
         </section>
 
         {/* Help Section */}
