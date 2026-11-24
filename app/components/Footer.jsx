@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaInstagram, FaFacebookF, FaTiktok } from 'react-icons/fa';
 
 /*
   bark #3B1D12 | deep #2B140C | leaf #8DC63F | moss #6FA83A | cream #F6F3EC
@@ -38,29 +39,18 @@ const legalLinks = [
 const socials = [
   {
     label: 'Instagram',
-    href: '#',
-    icon: (
-      <>
-        <rect x="3" y="3" width="18" height="18" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" />
-      </>
-    ),
+    href: 'https://www.instagram.com/teekaresort/',
+    icon: <FaInstagram className="h-5 w-5" />,
   },
   {
     label: 'Facebook',
-    href: '#',
-    icon: <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" />,
+    href: 'https://www.facebook.com/teekaresortpokhara',
+    icon: <FaFacebookF className="h-5 w-5" />,
   },
   {
-    label: 'YouTube',
-    href: '#',
-    icon: (
-      <>
-        <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
-        <path d="M10 9.5v5l4.5-2.5z" />
-      </>
-    ),
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@teeka_resort?_r=1&_t=ZS-9BSJtFDRa8w',
+    icon: <FaTiktok className="h-5 w-5" />,
   },
 ];
 
@@ -91,7 +81,7 @@ const Footer = () => {
             />
           </a>
 
-          {/* Book With Us (replaces Reservations) */}
+          {/* Book With Us */}
           <div>
             <h3 className="mb-6 text-[15px] font-semibold uppercase tracking-[-0.2px]">
               Book With Us
@@ -166,21 +156,12 @@ const Footer = () => {
                 <li key={s.label}>
                   <a
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3B1D12]/25 text-[#3B1D12] transition-colors hover:border-[#8DC63F] hover:bg-[#8DC63F] focus-visible:border-[#8DC63F] focus-visible:bg-[#8DC63F] focus-visible:outline-none"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3B1D12]/25 text-[#3B1D12] transition-colors hover:border-[#8DC63F] hover:bg-[#8DC63F] hover:text-[#F6F3EC] focus-visible:border-[#8DC63F] focus-visible:bg-[#8DC63F] focus-visible:text-[#F6F3EC] focus-visible:outline-none"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-5 w-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      {s.icon}
-                    </svg>
+                    {s.icon}
                   </a>
                 </li>
               ))}
@@ -192,17 +173,10 @@ const Footer = () => {
       {/* Legal bar */}
       <div className="bg-[#3B1D12] text-[#F6F3EC]">
         <div className="mx-auto flex max-w-[1700px] flex-col gap-4 px-5 py-6 sm:px-8 md:h-[77px] md:flex-row md:items-center md:justify-between md:py-0 lg:px-[6%]">
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
-            {legalLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="transition-colors hover:text-[#8DC63F] focus-visible:text-[#8DC63F] focus-visible:outline-none"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+          <ul className=" text-[15px]">
+            Crafted by <a href="https://drishtidigital.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#8DC63F] focus-visible:text-[#8DC63F] focus-visible:outline-none">
+              Drishti Digital
+            </a>
           </ul>
 
           <p className="text-[15px] font-semibold md:mr-24">

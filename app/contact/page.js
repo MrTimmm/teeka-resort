@@ -20,7 +20,7 @@ const contactInfo = [
   },
   {
     label: 'Phone',
-    lines: ['+977-61-452033', '453986', '456599'],
+    lines: ['+977-61-452033', '9802834004', '9856030133'],
     href: 'tel:+97761452033',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -30,7 +30,7 @@ const contactInfo = [
   },
   {
     label: 'Email',
-    lines: ['sales@teekaresort.com'],
+    lines: ['sales@teekaresort.com', 'info@teekaresort.com'],
     href: 'mailto:sales@teekaresort.com',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

@@ -7,6 +7,7 @@ import Services from "./components/Services";
 import Explore from "./components/Explore";
 import WhatsOn from "./components/WhatsOn";
 import Location from "./components/Location";
+import Dining from "./components/Dining";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
       <Hero />
       <About />
       <Room />
-      <Services />
+      {/* <Services /> */}
+      <Dining />
       <Explore />
       <WhatsOn />
       <Location />

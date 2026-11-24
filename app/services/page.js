@@ -105,7 +105,7 @@ const page = () => {
 
                         <div className="flex flex-col">
                             <img
-                                src="/images/hall.jpg"
+                                src="/images/meeting.jpeg"
                                 alt="Hall"
                                 className="h-[60vh] object-cover md:h-[70vh] md:w-full"
                             />
@@ -114,16 +114,50 @@ const page = () => {
                             <p className="text-md">A spacious venue for weddings, events, and gatherings, framed by the beauty of the Himalayas. </p>
                         </div>
 
-                        {/* <div className="flex flex-col">
+                        <div className="flex flex-col">
                             <img
-                                src="/images/concierge.jpg"
-                                alt="Concierge"
+                                src="/images/tickter.jfif"
+                                alt="Ticketing"
                                 className="h-[60vh] object-cover md:h-[70vh] md:w-full"
                             />
                             <p className="text-md uppercase mt-4">We offer </p>
-                            <h2 className="text-2xl font-semibold mb-4 ">Concierge</h2>
-                            <p className="text-md">Our dedicated team is on hand around the clock to arrange treks, tours, and every detail of your stay. </p>
-                        </div> */}
+                            <h2 className="text-2xl font-semibold mb-4 ">Ticketing</h2>
+                            <p className="text-md">Book your domestic and international flights, bus tickets, and tours with ease through our dedicated travel desk. </p>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <img
+                                src="/images/cargo.jpg"
+                                alt="Cargo"
+                                className="h-[60vh] object-cover md:h-[70vh] md:w-full"
+                            />
+                            <p className="text-md uppercase mt-4">We provide </p>
+                            <h2 className="text-2xl font-semibold mb-4 ">Cargo</h2>
+                            <p className="text-md">Reliable and secure cargo services for your domestic and international shipping needs, handled with care. </p>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <img
+                                src="/images/currency.webp"
+                                alt="Money Exchange"
+                                className="h-[60vh] object-cover md:h-[70vh] md:w-full"
+                            />
+                            <p className="text-md uppercase mt-4">We provide </p>
+                            <h2 className="text-2xl font-semibold mb-4 ">Money Exchange</h2>
+                            <p className="text-md">Convenient currency exchange services at competitive rates, ensuring you are always ready for your adventures. </p>
+                        </div>
+
+                        {/* New Paragliding Service */}
+                        <div className="flex flex-col">
+                            <img
+                                src="/images/para.jpg"
+                                alt="Paragliding"
+                                className="h-[60vh] object-cover md:h-[70vh] md:w-full"
+                            />
+                            <p className="text-md uppercase mt-4">Experience </p>
+                            <h2 className="text-2xl font-semibold mb-4 ">Paragliding</h2>
+                            <p className="text-md">Soar above Pokhara and take in breathtaking aerial views of Phewa Lake and the Annapurna range with our guided paragliding adventures. </p>
+                        </div>
 
                     </div>
 

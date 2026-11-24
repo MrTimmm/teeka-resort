@@ -19,7 +19,7 @@ const page = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#2B140C]/30 via-transparent to-[#2B140C]/60" />
 
         <section className="absolute inset-x-0 bottom-0 z-10 px-5 pb-12 text-center sm:pb-16 md:pb-20 md:px-10">
-          <h1 className="mx-auto max-w-[1570px] font-serif text-[36px] uppercase leading-[1.16] tracking-[-1.5px] sm:text-[46px] md:text-[50px] lg:text-[60px] xl:text-5xl xl:tracking-[-2px]">
+          <h1 className="mx-auto max-w-5xl  text-[36px] uppercase leading-[1.16] tracking-[-1.5px] sm:text-[46px] md:text-[50px] lg:text-[60px] xl:text-5xl xl:tracking-[-2px]">
             A lakeside retreat steeped in Nepali hospitality in the heart
             <span className="block">of Pokhara</span>
           </h1>
@@ -39,7 +39,7 @@ const page = () => {
               About Teeka Resort
             </p>
 
-            <h2 className="mx-auto mb-6 max-w-4xl font-serif text-3xl uppercase leading-tight md:text-6xl">
+            <h2 className="mx-auto mb-6 max-w-4xl  text-3xl uppercase leading-tight md:text-6xl">
               WELCOME TO TEEKA RESORT
             </h2>
 
@@ -48,7 +48,7 @@ const page = () => {
               standard, personalized services that reflect our Nepali Hospitality.
               Teeka Resort is unique in itself with prime location to Phewa Lake
               and spacious, luxurious rooms that make guest stay more pleasant
-              and memorable. With 65 rooms, 03 halls, and over 20 years in
+              and memorable. With 65 rooms, 03 halls, and over 30 years in
               hospitality, we are ideally suited for both business and leisure
               travelers in Pokhara.
             </p>
@@ -63,7 +63,7 @@ const page = () => {
 
           <div className="mt-32 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
             <div className="">
-              <h2 className="font-serif text-3xl uppercase leading-tight md:text-5xl">ACCOMMODATION</h2>
+              <h2 className=" text-3xl uppercase leading-tight md:text-5xl">ACCOMMODATION</h2>
               <p className="mt-4 text-lg max-w-xl md:text-lg">
                 Teeka Resort is all set to engage you in one of the finest
                 vibrant Hospitality Experiences in Pokhara. Teeka Resort is
@@ -77,9 +77,9 @@ const page = () => {
 
             <div className="flex flex-col items-center text-center">
               <img
-                src="/images/about.jfif"
+                src="/images/main.jpeg"
                 alt="Teeka Resort accommodation"
-                className="h-[60vh] object-cover md:h-[80vh] md:w-full"
+                className="h-[60vh] object-cover md:h-[90vh] md:w-full"
               />
             </div>
 

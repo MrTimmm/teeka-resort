@@ -14,14 +14,14 @@
 */
 
 @theme {
-  --font-serif: var(--font-merriweather), "Merriweather", Georgia, serif;
-  --font-joane: var(--font-merriweather), "Merriweather", Georgia, serif;
+  --font-serif: "Times New Roman", Times, Georgia, serif;
+  --font-joane: "Times New Roman", Times, Georgia, serif;
   --font-raleway: var(--font-raleway), "Raleway", Arial, sans-serif;
   --font-sans: var(--font-raleway), "Raleway", Arial, sans-serif;
 }
 
 :root {
-  --font-heading: var(--font-merriweather), "Merriweather", Georgia, serif;
+  --font-heading: "Times New Roman", Times, Georgia, serif;
   --font-body: var(--font-raleway), "Raleway", Arial, sans-serif;
 }
 
@@ -47,13 +47,11 @@ h2,
 h3,
 h4,
 h5,
-h6,
-.font-serif,
-.font-joane {
+h6{
   font-family: var(--font-heading);
 }
 
-/* Optional: tighten Merriweather's default loose rhythm for hero headings */
+/* Optional: tighten Times New Roman's default loose rhythm for hero headings */
 .font-serif,
 .font-joane {
   letter-spacing: -0.01em;
